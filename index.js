@@ -35,6 +35,14 @@ app.post("/api/persons", (req, res) => {
   res.send(person);
 });
 
+app.delete("/api/persons/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const person = db.persons.find(p => p.id === id);
+  if (!person) return res.status(204).send({ messge: "Bad Request" });
+  db.persons = db.persons.filter(p => p.id !== id);
+  res.status(204).send(db.persons);
+});
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on Port: ${PORT}`);
