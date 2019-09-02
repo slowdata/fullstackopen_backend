@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const static = require("static");
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(
 );
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static("build"));
 
 const getMaxId = () => Math.max(...db.persons.map(p => p.id)) + 1;
 
