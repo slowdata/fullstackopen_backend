@@ -9,7 +9,8 @@
     "deploy:full": "npm run build:ui && git add . && git commit -m uiibuild && git push && npm run deploy",
     "start": "node index",
     "watch": "nodemon index",
-    "logs:prod": "heroku logs --tail"
+    "logs:prod": "heroku logs --tail",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -24,6 +25,11 @@
     "morgan": "^1.9.1"
   },
   "devDependencies": {
+    "eslint": "^6.3.0",
     "nodemon": "^1.19.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false
   }
 }
